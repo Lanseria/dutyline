@@ -1,0 +1,50 @@
+#navbar-full
+  .container
+    nav.navbar.navbar-ct-blue.navbar-transparent.navbar-fixed-top(role='navigation')
+      .container
+        // Brand and toggle get grouped for better mobile display
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a(href='#')
+            .logo-container
+              .logo
+                img(src='assets/img/new_logo.png')
+              .brand
+                | 欢迎你 用户
+        // Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li.dropdown
+              a.dropdown-toggle(href='#gsdk', data-toggle='dropdown')
+                | 大学生科技创业中心 
+                b.caret
+              ul.dropdown-menu
+                li
+                  a(href='#gsdk') Action
+                li
+                  a(href='#gsdk') Another action
+                li
+                  a(href='#gsdk') Something else here
+                li.divider
+                li
+                  a(href='#gsdk') Separated link
+                li.divider
+                li
+                  a(href='#gsdk') One more separated link
+            li
+              a.btn.btn-round.btn-default(href='#') 登陆
+        // /.navbar-collapse
+      // /.container-fluid
+  // end container
+  .blurred-container
+    .motto
+      div 过来
+      .border.no-right-border 帮
+      .border 助
+      div 我们
+    .img-src(style="background-image: url('assets/img/cover_4.jpg')")
+    .img-src.blur(style="background-image: url('assets/img/cover_4_blur.jpg')")

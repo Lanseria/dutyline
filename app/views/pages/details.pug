@@ -1,0 +1,68 @@
+extends ../layout
+
+block content
+  include ./includes/header
+  .main
+    .container.tim-container
+      .tim-title
+        h3 大学生科技创业中心
+          small 正在收集你们的课表
+      .row
+        .col-sm-3
+          .form-group
+            input.form-control(type='text', value='', placeholder='姓名')
+        .col-sm-3
+          .form-group.has-success
+            input.form-control(type='text', value='', placeholder='学号')
+        .col-sm-3
+          .form-group.has-error.has-feedback
+            input.form-control(type='text', value='', placeholder='联系方式')
+            span.glyphicon.glyphicon-remove.form-control-feedback
+        .col-sm-3
+          .input-group
+            input.form-control(type='text', value='', placeholder='部门')
+            span.input-group-addon
+              i.fa.fa-group
+      // end row
+      .tim-title
+        h3 课表
+      #acordeon
+        #accordion.panel-group
+          .panel.panel-default
+            .panel-heading
+              h4.panel-title
+                a(data-target='#collapseOne', href='#collapseOne', data-toggle='gsdk-collapse')
+                  | XLS文件上传
+            #collapseOne.panel-collapse.collapse
+              .panel-body
+                | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven&apos;t heard of them accusamus labore sustainable VHS.
+          .panel.panel-default
+            .panel-heading
+              h4.panel-title
+                a(data-target='#collapseTwo', href='#collapseTwo', data-toggle='gsdk-collapse')
+                  | 课表直接填写
+            #collapseTwo.panel-collapse.collapse
+              .panel-body
+                | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven&apos;t heard of them accusamus labore sustainable VHS.
+block contentjs
+  script(src='assets/js/gsdk-checkbox.js')
+  script(src='assets/js/gsdk-radio.js')
+  script(src='assets/js/gsdk-bootstrapswitch.js')
+  script(src='assets/js/get-shit-done.js')
+  script(src='assets/js/custom.js')
+  script(type='text/javascript').
+    $('.btn-tooltip').tooltip();
+    $('.label-tooltip').tooltip();
+    $('.pick-class-label').click(function(){
+      var new_class = $(this).attr('new-class');
+      var title = $(this).attr('data-original-title');
+      var old_class = $('#display-buttons').attr('data-class');
+      var display_div = $('#display-buttons');
+      if(display_div.length) {
+        var display_buttons = display_div.find('.btn');
+        display_buttons.removeClass(old_class);
+        display_buttons.addClass(new_class);
+        display_buttons.text(title+"点击此进入(点击相应的部门去填写上交课表)");
+        display_div.attr('data-class', new_class);
+      }
+    });
