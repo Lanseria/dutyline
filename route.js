@@ -11,13 +11,14 @@ var multipartMiddleware = multipart();
 module.exports = function(app){
   //pre handle user
   app.use(function(req, res, next){
-    var deviceAgent = req.headers["user-agent"].toLowerCase();
-    var agentID = deviceAgent.match(/(iphone|ipod|ipad|android)/);
-    if(agentID){
-      return res.send('仅支持PC端');
-    }else{
-      next();
-    }
+    // var deviceAgent = req.headers["user-agent"].toLowerCase();
+    // var agentID = deviceAgent.match(/(iphone|ipod|ipad|android)/);
+    // if(agentID){
+    //   return res.send('仅支持PC端');
+    // }else{
+    //   next();
+    // }
+    next();
   })
 
   // index page
