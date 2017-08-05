@@ -52,4 +52,4 @@ require('./route')(app);
 
 app.listen(port);
 
-console.log('duty started on port '+port);
+console.log('duty started on http://localhost:'+port);
