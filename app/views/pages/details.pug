@@ -9,23 +9,23 @@ block content
           small 正在收集你们的课表
       .row
         .col-sm-3
-          .form-group
-            input.form-control(type='text', value='', placeholder='姓名')
+          .form-group.feedback
+            input.form-control#dutyname(type='text', value='', placeholder='姓名')
         .col-sm-3
-          .form-group.has-success
-            input.form-control(type='text', value='', placeholder='学号')
+          .form-group.has-feedback
+            input.form-control#dutynum(type='text', value='', placeholder='学号')
         .col-sm-3
-          .form-group.has-error.has-feedback
-            input.form-control(type='text', value='', placeholder='联系方式')
-            span.glyphicon.glyphicon-remove.form-control-feedback
+          .form-group.has-feedback
+            input.form-control#dutytel(type='text', value='', placeholder='联系方式')
+            span.glyphicon.glyphicon-earphone.form-control-feedback
         .col-sm-3
-          .input-group
-            input.form-control(type='text', value='', placeholder='部门')
+          .input-group.feedback
+            input.form-control#dutydept(type='text', value=dept, placeholder='部门', value-id=dept_id)
             span.input-group-addon
               i.fa.fa-group
       // end row
       .tim-title
-        h3 课表
+        h5 课表
       #acordeon
         #accordion.panel-group
           .panel.panel-default
@@ -36,7 +36,7 @@ block content
             #collapseOne.panel-collapse.collapse
               .panel-body
                 .form-group
-                  input.form-control#upload(type="file", name="uploadXls", accept="application/msexcel,.xls,.xlsx")
+                  input.form-control#upload(type="file", name="uploadXls", accept=".xls")
                   br
                   br
                   br
@@ -46,173 +46,8 @@ block content
                 a(data-target='#collapseTwo', href='#collapseTwo', data-toggle='gsdk-collapse')
                   | 课表直接填写
             #collapseTwo.panel-collapse.collapse
-              .panel-body
-                table.table.table-condensed.table-hover.table-responsive
-                  thead
-                    tr
-                      th #
-                      th 星期一
-                      th 星期二
-                      th 星期三
-                      th 星期四
-                      th 星期五
-                      th 星期六
-                      th 星期日
-                  tbody
-                    tr
-                      th(scope="row") 1
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                        
-                    tr
-                      th(scope="row") 2
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                        
-                    tr
-                      th(scope="row") 3
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                        
-                    tr
-                      th(scope="row") 4
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                        
-                    tr
-                      th(scope="row") 5
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
-                      td
-                        label.checkbox(for='checkbox1')
-                          input#checkbox1(type='checkbox', value='', data-toggle='checkbox')
-                          | 
+              .panel-body#table
+                  
       .tim-title
         h3 已经上交的童鞋
       .row
@@ -220,6 +55,7 @@ block content
           
                         
 block contentjs
+  script(src='assets/js/classtable.js')
   script(src='assets/js/gsdk-checkbox.js')
   script(src='assets/js/gsdk-radio.js')
   script(src='assets/js/gsdk-bootstrapswitch.js')

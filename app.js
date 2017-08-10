@@ -10,7 +10,7 @@ var mongoStore = require('connect-mongo')(session);
 
 
 //config
-// var config = require('./config');
+var config = require('./config');
 var dbUrl = 'mongodb://localhost/duty';
 var port = process.env.PORT || 3007;
 
@@ -47,6 +47,7 @@ if('development' === env){
   mongoose.set('debug', true);
 }
 app.locals.moment = require('moment');
+app.locals.web = config.web;
 
 require('./route')(app);
 

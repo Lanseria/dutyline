@@ -5,14 +5,23 @@ var ArrageClass = require('../../lpsdk/arrageClass').ArrageClass;
 
 exports.index = function(req, res){
   res.render('index', {
-    title: '排值班系统',
+    isSubmit: false
   });
 }
 
 exports.details = function(req, res){
+  var dept_id = req.query.dept_id;
   res.render('details', {
-    title: '排值班系统',
+    dept_id: dept_id,
+    dept: res.locals.web.depts[dept_id],
+    isSubmit: true
   });
+}
+
+exports.postdetails = function(req, res){
+  var xlsFileData = req.files.xlsx;
+  var data  = req.body.data;
+  console.log(xlsFileData, data);
 }
 
 exports.demofiles = function(req, res){

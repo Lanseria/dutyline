@@ -11,6 +11,7 @@ var multipartMiddleware = multipart();
 module.exports = function(app){
   //pre handle user
   app.use(function(req, res, next){
+    res.locals.web = app.locals.web;
     // var deviceAgent = req.headers["user-agent"].toLowerCase();
     // var agentID = deviceAgent.match(/(iphone|ipod|ipad|android)/);
     // if(agentID){
@@ -26,6 +27,7 @@ module.exports = function(app){
   app.get('/index', Index.index);
 
   app.get('/details', Index.details);
+  app.post('/details', Index.postdetails);
 
   app.post('/uploadXls', multipartMiddleware, Index.save);
 

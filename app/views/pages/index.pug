@@ -14,11 +14,8 @@ block content
         .row.tim-row
           .col-md-6
             .pick-class
-              span.pick-class-label.label-default.label-fill.label-tooltip(data-toggle='tooltip', data-placement='top', title='技术部', new-class='btn-default')  
-              span.pick-class-label.label-primary.label-fill.label-tooltip(data-toggle='tooltip', data-placement='top', title='动漫部', new-class='btn-primary')  
-              span.pick-class-label.label-info.label-fill.label-tooltip(data-toggle='tooltip', data-placement='top', title='项目部', new-class='btn-info')  
-              span.pick-class-label.label-success.label-fill.label-tooltip(data-toggle='tooltip', data-placement='top', title='行政部', new-class='btn-success')  
-              span.pick-class-label.label-warning.label-fill.label-tooltip(data-toggle='tooltip', data-placement='top', title='网络部', new-class='btn-warning')
+              each item,index in web.depts
+                span.pick-class-label.label-info.label-fill.label-tooltip(data-toggle='tooltip', data-placement='top', title=item, new-class='btn-info', new-id=index) #{item}
         #display-buttons.row.tim-row(data-class='btn-info')
           a.btn.btn-block.btn-lg.btn-info.btn-fill(href='/details') (点击相应的部门去填写上交课表)
         // end row
@@ -34,6 +31,7 @@ block contentjs
     $('.label-tooltip').tooltip();
     $('.pick-class-label').click(function(){
       var new_class = $(this).attr('new-class');
+      var new_id = $(this).attr('new-id');
       var title = $(this).attr('data-original-title');
       var old_class = $('#display-buttons').attr('data-class');
       var display_div = $('#display-buttons');
@@ -43,6 +41,7 @@ block contentjs
         display_buttons.addClass(new_class);
         display_buttons.text(title+"点击此进入(点击相应的部门去填写上交课表)");
         display_div.attr('data-class', new_class);
+        display_buttons.attr('href', '/details?dept_id='+new_id);
       }
     });
     
