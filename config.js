@@ -2,6 +2,7 @@ var fs = require('fs');
 var path = require('path');
 const public = path.resolve(__dirname, 'public/upload');
 var config = {
+  pwd: "000000",
   web: {
     title: '排值班系统',
     org: '大学生科技创业中心',

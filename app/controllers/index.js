@@ -78,6 +78,23 @@ exports.demofiles = function(req, res){
   }
 }
 
+exports.admin = function(req, res){
+  res.render('admin', {
+
+  })
+}
+exports.adminpost = function(req, res){
+  // console.log(req.body);
+  if(req.body.pwd == config.pwd){
+      res.render('adminpost', {
+      
+    })
+  }else{
+    res.redirect('/admin')
+  }
+
+}
+
 exports.download = function(req, res){
   var client = new ArrageClass({
     'row': 6,

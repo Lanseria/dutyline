@@ -31,6 +31,11 @@ module.exports = function(app){
   app.post('/uploadPost', multipartMiddleware, Index.savePoster);
 
   app.get('/demofiles/:fileName', Index.demofiles);
+  
+  // dashboard 后台
+
+  app.get('/admin', Index.admin);
+  app.post('/admin', Index.adminpost);
 
   app.get('/download', Index.download);
 }
