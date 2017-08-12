@@ -1,11 +1,19 @@
 var fs = require('fs');
 var path = require('path');
+var config = require('../../config.js');
 var Member = require('../models/member');
 var ArrageClass = require('../../lpsdk/arrageClass').ArrageClass;
 
 exports.index = function(req, res){
+  console.log(req.query.res);
+  if(req.query.res=='1'){
+    word = '谢谢';
+  }else{
+    word = '过来';
+  }
   res.render('index', {
-    isSubmit: false
+    isSubmit: false,
+    word: word
   });
 }
 
@@ -24,11 +32,11 @@ exports.savePoster = function(req, res){
 	if (originalFilename) {
 		fs.readFile(filePath, function(err, data){
 			var timestamp = Date.now();
-			var type = posterData.type.split('/')[1];
-			var poster = originalFilename;
+			var type = originalFilename.split('.')[1];
+			var poster = timestamp+'.'+type;
 			var newPath = path.join(__dirname, '../../', '/public/upload/' + poster);
 			fs.writeFile(newPath, data, function(err){
-				res.json(poster);
+				res.json({fname:poster, type:type});
 			});
 		})
 	}
@@ -36,8 +44,20 @@ exports.savePoster = function(req, res){
 
 exports.postdetails = function(req, res){
   var data  = req.body.data;
-  console.log(data);
-  res.json('success');
+  var member = new Member(data);
+  console.log(member);
+  var sourceFile = path.join(config.pathway.path, member.filename);
+  var destPath = path.join(config.pathway[data.dept], member.name+'.'+member.type);
+  fs.rename(sourceFile, destPath, function (err) {
+    if (err) throw err;
+    fs.stat(destPath, function (err, stats) {
+      if (err) throw err;
+      // console.log('stats: ' + JSON.stringify(stats));
+      member.save(function(err, member){
+        res.json('success');
+      })
+    });
+  });
 }
 
 exports.demofiles = function(req, res){
@@ -84,33 +104,4 @@ exports.download = function(req, res){
       }
     }
   });
-}
-
-
-exports.save = function(req, res){
-  var xlsFileData = req.files.uploadXls;
-  var filePath = xlsFileData.path;
-  var name = req.body.uploadName;
-  var number = req.body.uploadNumber;
-  var originalFilename = xlsFileData.originalFilename;
-  if (originalFilename) {
-    fs.readFile(filePath, function(err, data){
-      console.log(xlsFileData.type);
-      // var type = xlsFileData.type.split('/')[1];
-      var type = 'xls'
-      var xlsFile = name + '.' + type;
-      var newPath = path.join(__dirname, '../../', '/public/upload/' + xlsFile);
-      fs.writeFile(newPath, data, function(err){
-        var member = new Member();
-        member.name = name;
-        member.number = number;
-        member.save(function(err, member){
-          return res.redirect('/index');
-        })
-      })
-    })
-  }
-  else{
-    return res.redirect('/index');
-  }
 }

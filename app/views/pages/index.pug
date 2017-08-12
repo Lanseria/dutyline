@@ -15,7 +15,7 @@ block content
           .col-md-6
             .pick-class
               each item,index in web.depts
-                span.pick-class-label.label-info.label-fill.label-tooltip(data-toggle='tooltip', data-placement='top', title=item, new-class='btn-info', new-id=index) #{item}
+                span.pick-class-label.label-info.label-fill.label-tooltip(data-toggle='tooltip', data-placement='top', title=item.name, new-class='btn-info', new-id=index) #{item.name}
         #display-buttons.row.tim-row(data-class='btn-info')
           a.btn.btn-block.btn-lg.btn-info.btn-fill(href='/details') (点击相应的部门去填写上交课表)
         // end row

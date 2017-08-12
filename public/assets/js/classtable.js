@@ -50,24 +50,44 @@ $('#submit').on('click', function(){
   var num = $('#dutynum').val();
   var tel = $('#dutytel').val();
   var dept = $('#dutydept').val();
-  var data = {
-    name: name,
-    num: num,
-    tel: tel,
-    dept: dept
+  var filename = $('#filename').val();
+  var type = $('#type').val();
+  if(table==''||name==''||num==''||tel==''||dept==''||filename==''){
+    alert('请输入相应的信息以及表格信息');
+  }else{
+    var data = {
+      name: name,
+      num: num,
+      tel: tel,
+      dept: dept,
+      filename: filename,
+      type: type
+    }
+    $.post('', {data}, function(res){
+      console.log(res);
+      if(res=='success'){
+        window.location.href="/?res=1"; 
+      }
+    })
   }
-  $.post('', {data}, function(res){
-    console.log(res);
-  })
 })
 function uploadFile(obj){
+  var that = $(obj);
+  console.log(that);
+  var filePath = that.val();
+  if(filePath.indexOf('xlsx')==-1||filePath.indexOf('xls')==-1){
+    alert('必须上传xlsx格式或xls表格');
+    return false;
+  }
   $.ajaxFileUpload({
     url: '/uploadPost',
     secureuri: false,
     fileElementId: 'uploadPoster',
     dataType: 'json',
     success: function(data){
-      console.log('upload suc');
+      console.log(data);
+      $('#filename').val(data.fname);
+      $('#type').val(data.type);
     },
     error: function(data){
       console.log('server is error');

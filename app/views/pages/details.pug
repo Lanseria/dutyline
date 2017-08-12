@@ -20,7 +20,8 @@ block content
             span.glyphicon.glyphicon-earphone.form-control-feedback
         .col-sm-3
           .input-group.feedback
-            input.form-control#dutydept(type='text', value=dept, placeholder='部门', value-id=dept_id)
+            input.form-control#dutydeptn(type='text', value=dept.name, placeholder='部门', value-id=dept_id)
+            input.form-control#dutydept(type='hidden', value=dept.n)
             span.input-group-addon
               i.fa.fa-group
       // end row
@@ -32,11 +33,14 @@ block content
             .panel-heading
               h4.panel-title
                 a(data-target='#collapseOne', href='#collapseOne', data-toggle='gsdk-collapse')
-                  | XLS文件上传
+                  | XLS文件上传 
+                  a(href="/demofiles/demo.xls" style="color:red;") 文件[点击下载]
             #collapseOne.panel-collapse.collapse
               .panel-body
                 .form-group
-                  input#uploadPoster(type="file",name="uploadPoster", accept=".xls", onchange ="uploadFile(this,1)")
+                  input#uploadPoster(type="file",name="uploadPoster", accept=".xls*", onchange ="uploadFile(this)")
+                  input(type="hidden", id="filename")
+                  input(type="hidden", id="type")
                   br
                   br
                   br

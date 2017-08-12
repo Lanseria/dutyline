@@ -30,8 +30,6 @@ module.exports = function(app){
   app.post('/details', Index.postdetails);
   app.post('/uploadPost', multipartMiddleware, Index.savePoster);
 
-  app.post('/uploadXls', multipartMiddleware, Index.save);
-
   app.get('/demofiles/:fileName', Index.demofiles);
 
   app.get('/download', Index.download);

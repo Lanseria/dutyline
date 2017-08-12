@@ -18,6 +18,12 @@ var MemberSchema = new Schema({
     type: String,
     default: 'Success'
   },
+  filename:{
+    type: String,
+  },
+  type: {
+    type: String,
+  },
   meta:{
     createAt:{
       type:Date,
