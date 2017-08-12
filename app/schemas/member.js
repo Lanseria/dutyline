@@ -5,7 +5,13 @@ var MemberSchema = new Schema({
   name: {
     type: String,
   },
-  number: {
+  num: {
+    type: String,
+  },
+  tel: {
+    type: String,
+  },
+  dept: {
     type: String,
   },
   status:{

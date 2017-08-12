@@ -36,7 +36,7 @@ block content
             #collapseOne.panel-collapse.collapse
               .panel-body
                 .form-group
-                  input.form-control#upload(type="file", name="uploadXls", accept=".xls")
+                  input#uploadPoster(type="file",name="uploadPoster", accept=".xls", onchange ="uploadFile(this,1)")
                   br
                   br
                   br
@@ -56,6 +56,7 @@ block content
                         
 block contentjs
   script(src='assets/js/classtable.js')
+  script(src='assets/js/jquery.ajaxfileupload.js')
   script(src='assets/js/gsdk-checkbox.js')
   script(src='assets/js/gsdk-radio.js')
   script(src='assets/js/gsdk-bootstrapswitch.js')

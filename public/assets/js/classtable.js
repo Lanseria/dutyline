@@ -46,7 +46,6 @@
 })();
 $('#submit').on('click', function(){
   var table = $('table');
-  console.log(table);
   var name = $('#dutyname').val();
   var num = $('#dutynum').val();
   var tel = $('#dutytel').val();
@@ -57,15 +56,25 @@ $('#submit').on('click', function(){
     tel: tel,
     dept: dept
   }
-  var xlsx = $('#upload').files[0];
-  var fm = new FormData();
-  fm.append('data', data);
-  fm.append('xlsx', xlsx);
-
-  var request = new XMLHttpRequest();
-  request.open('post', '');
-  request.send(fm);
-})          
+  $.post('', {data}, function(res){
+    console.log(res);
+  })
+})
+function uploadFile(obj){
+  $.ajaxFileUpload({
+    url: '/uploadPost',
+    secureuri: false,
+    fileElementId: 'uploadPoster',
+    dataType: 'json',
+    success: function(data){
+      console.log('upload suc');
+    },
+    error: function(data){
+      console.log('server is error');
+    }
+  })
+  return false;
+}      
 /*.table.table-condensed.table-hover.table-responsive
 thead
   tr

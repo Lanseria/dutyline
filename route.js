@@ -28,6 +28,7 @@ module.exports = function(app){
 
   app.get('/details', Index.details);
   app.post('/details', Index.postdetails);
+  app.post('/uploadPost', multipartMiddleware, Index.savePoster);
 
   app.post('/uploadXls', multipartMiddleware, Index.save);
 

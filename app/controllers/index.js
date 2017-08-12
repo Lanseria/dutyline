@@ -17,11 +17,27 @@ exports.details = function(req, res){
     isSubmit: true
   });
 }
+exports.savePoster = function(req, res){
+  var posterData = req.files.uploadPoster;
+  var filePath = posterData.path;
+  var originalFilename = posterData.originalFilename;
+	if (originalFilename) {
+		fs.readFile(filePath, function(err, data){
+			var timestamp = Date.now();
+			var type = posterData.type.split('/')[1];
+			var poster = originalFilename;
+			var newPath = path.join(__dirname, '../../', '/public/upload/' + poster);
+			fs.writeFile(newPath, data, function(err){
+				res.json(poster);
+			});
+		})
+	}
+}
 
 exports.postdetails = function(req, res){
-  var xlsFileData = req.files.xlsx;
   var data  = req.body.data;
-  console.log(xlsFileData, data);
+  console.log(data);
+  res.json('success');
 }
 
 exports.demofiles = function(req, res){
