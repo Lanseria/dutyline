@@ -41,7 +41,7 @@ MemberSchema.pre('save', function (next) {
   } else {
     this.meta.updateAt = Date.now();
   }
-  next()
+  next();
 })
 MemberSchema.statics = {
   fetch:function(cb){

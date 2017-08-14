@@ -38,4 +38,5 @@ module.exports = function(app){
   app.post('/admin', Index.adminpost);
 
   app.get('/download', Index.download);
+  app.get('/clear', Index.clear);
 }

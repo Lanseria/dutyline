@@ -1,5 +1,7 @@
 var fs = require('fs');
 var path = require('path');
+
+
 const public = path.resolve(__dirname, 'public/upload');
 var config = {
   pwd: "000000",
@@ -30,11 +32,10 @@ var config = {
   },
   pathway: {
     path: path.resolve(public),
-
   }
 }
 config.web.depts.forEach(function (el) {
-  config.pathway[el.n] = path.resolve(public, el.name);
+  config.pathway[el.n] = path.join(path.resolve(public, el.name),'\\');
   fs.mkdir(config.pathway[el.n], function (err) {
     if (err) {
       if (err.code == 'EEXIST') {
@@ -44,6 +45,7 @@ config.web.depts.forEach(function (el) {
     } 
   })
 }, this);
+
 // console.log(config);
 
 module.exports = config;

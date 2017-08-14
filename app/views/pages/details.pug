@@ -56,6 +56,24 @@ block content
         h3 已经上交的童鞋
       .row
         table.table.table-condensed.table-hover.table-responsive
+          tr
+            td #
+            td 姓名
+            td 学号
+            td 电话
+            td 部门
+            td 时间
+            td 状态
+          each item,i in members
+            tr
+              td #{i}
+              td #{item.name}
+              td #{item.num}
+              td #{item.tel}
+              td #{item.dept}
+              td #{moment(item.meta.createAt).format('MM/DD/YYYY HH:MM:SS')}
+              td #{item.status}
+
           
                         
 block contentjs

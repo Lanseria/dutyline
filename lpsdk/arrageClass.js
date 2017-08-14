@@ -1,5 +1,6 @@
 var exec = require('child_process').exec;
 var fs = require('fs');
+var rd = require('rd');
 var path = require('path');
 var XLSX = require('xlsx');
 var iconv = require("iconv-lite");
@@ -74,16 +75,16 @@ ArrageClass.prototype.readxlsx = function(matlab, files, commonpath, callback) {
     }
   })
 };
-ArrageClass.prototype.execute = function(callback) {
+ArrageClass.prototype.execute = function(rootpath, callback) {
   var matlab = null;
   var argv = this.row+' '+this.col+' '+this.many;
-  var commonpath = path.join(__dirname, '../public/upload/');
-  var commonpath1 = path.join(__dirname, '../public/result_xlsx/');
+  var commonpath = rootpath;
   var that = this;
   fs.readdir(commonpath, function(err, files){
     let error;
     if (err) {
-      error = err;    }
+      error = err;    
+    }
     if (!files.length) {
       error = 'No files to show!';
     }
@@ -129,8 +130,8 @@ ArrageClass.prototype.execute = function(callback) {
                         'mySheet': Object.assign({}, output, { '!ref': ref })
                     }
                 };
-                XLSX.writeFile(wb, commonpath1+'output.xlsx');
-                callback(null, commonpath1+'output.xlsx');
+                XLSX.writeFile(wb, commonpath+'output.xlsx');
+                callback(null, commonpath+'output.xlsx');
               })
             });
           }
